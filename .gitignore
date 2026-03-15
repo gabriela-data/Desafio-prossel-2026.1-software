@@ -1,0 +1,18 @@
+# Compilação
+build/
+bin/
+lib/
+*.o
+*.a
+*.so
+*.dll
+*.exe
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.user
+
+# SFML (se baixar direto no build)
+_deps/
