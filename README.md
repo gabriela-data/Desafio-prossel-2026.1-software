@@ -27,8 +27,8 @@ sudo apt-get install cmake g++ libx11-dev libxcursor-dev libxrandr-dev libudev-d
 ### 🛠️ Compilação e Execução
 
 #### Linux
-1. Compile o projeto: `mkdir build && cd build && cmake .. && make -j$(nproc)`
-2. Execute o binário: `./SimuladorFutebol`
+1. Compile o projeto: `./compilar.sh` (o script configura o CMake e compila automaticamente)
+2. Execute o binário: `./build/SimuladorFutebol`
 
 #### Windows (Via Terminal/PowerShell)
 1. Crie a pasta de build: `mkdir build`
