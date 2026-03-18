@@ -140,10 +140,11 @@ Ao finalizar o desafio, você deve entregar um **repositório (GitHub/GitLab)** 
 1.  O código fonte da sua solução (pasta `solucao/`).
 2.  Um documento explicativo (pode ser um `README_SOLUCAO.md` ou um `PDF`).
 
-### 📝 O que deve conter no documento:
+### 📝 O que deve conter no documento/apresentação:
 - **Explicação da Lógica:** Detalhamento do seu **Tomador de Decisão** e Planejador.
 - **Justificativa das Escolhas:** Por que você escolheu essa arquitetura? (Ex: Por que usar uma Behavior Tree em vez de uma Máquina de Estados? Ou, caso tenha feito via lógica linear no código, por que essa escolha foi suficiente?).
 - **Coordenação:** Como você lidou com a matemática e a cooperação entre os 3 robôs.
+- **Apresentação:**: No dia combinado, você terá até 20 minutos para aprresentar sua solução e mais 5 para questionamentos da equipe. 
 
 ### 📊 Critérios de Avaliação:
 - **Robustez:** Como os robôs reagem a diferentes situações.
