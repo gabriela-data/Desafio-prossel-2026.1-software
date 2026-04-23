@@ -16,8 +16,8 @@ public:
 private:
     // Constantes do campo potencial
     static constexpr float REPULSION_RADIUS = 0.20f;
-    static constexpr float REPULSION_STRENGTH = 0.6f;
-    static constexpr float TANGENTIAL_STRENGTH = 0.5f;
+    static constexpr float REPULSION_STRENGTH = 0.3f;
+    static constexpr float TANGENTIAL_STRENGTH = 0.7f;
     static constexpr float WALL_ESCAPE_STRENGTH = 0.8f;
     static constexpr float STUCK_DISTANCE = 0.15f;
     static constexpr float FIELD_X_LIMIT = 0.75f;
