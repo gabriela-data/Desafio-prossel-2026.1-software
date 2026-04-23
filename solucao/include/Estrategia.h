@@ -1,43 +1,33 @@
 #ifndef ESTRATEGIA_H
 #define ESTRATEGIA_H
 
-
 #include "Interfaces.h"
+#include "Planejador.h"
+#include <memory>
 #include <string>
-
 
 class Estrategia : public PlayerAgent {
 public:
-   Estrategia(int id, bool isTeamA);
-  
-   // Ponto de entrada da lógica do candidato
-   Action think(const GameState& state) override;
+    // Construtor de compatibilidade (usa planejador padrão: campo potencial)
+    Estrategia(int id, bool isTeamA);
 
+    // Construtor com injeção de dependência do planejador
+    Estrategia(int id, bool isTeamA, std::unique_ptr<Planejador> planejador);
+
+    Action think(const GameState& state) override;
 
 private:
-   int id;
-   bool teamA;
-   std::string role; // "Goleiro", "Ala", "Atacante"
+    int id;
+    bool teamA;
+    std::string role;
+    std::unique_ptr<Planejador> planejador;
 
+    static constexpr float DISTANCE_THRESHOLD = 0.05f;
 
-   // 1. Estados da FSM (Máquina de Estados)
-   enum State { IDLE, DEFENDING, ATTACKING, REPOSITIONING };
-   State currentState;
-
-
-   // 2. Alvos Atuais (para evitar recalculados constantes)
-   float targetX;
-   float targetY;
-
-
-   // 3. Parâmetros de Ajuste (Facilitam a calibração sem recompilar tudo)
-   const float ROBOT_SPEED = 0.5f;    // Velocidade máxima permitida
-   const float DISTANCE_THRESHOLD = 0.05f; // Margem de erro (5cm)
-   const float BALL_OFFSET = 0.12f;   // Distância para o ponto de chute
-
-   
-   // Você é livre para criar variáveis, instanciar Máquinas de Estado ou Behavior Trees aqui.
+    void decidirAlvo(const GameState& state, float& alvoX, float& alvoY, bool& modoAtaqueTotal);
+    void calcularAlvoGoleiro(const GameState& state, float& alvoX, float& alvoY);
+    void calcularAlvoJogadorLinha(const GameState& state, float& alvoX, float& alvoY, bool& modoAtaqueTotal);
+    float calcularLado() const;
 };
 
-
-#endif // ESTRATEGIA_H
+#endif
