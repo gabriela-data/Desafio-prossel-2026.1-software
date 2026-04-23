@@ -5,7 +5,6 @@
 #include "Planejador.h"
 #include <vector>
 #include <queue>
-#include <unordered_map>
 #include <cmath>
 
 struct CellKey
@@ -31,6 +30,7 @@ struct CellCompare
 class PlanejadorDStar : public Planejador
 {
 public:
+    PlanejadorDStar();
     void planejar(const GameState &state,
                   const EntityState &eu,
                   float alvoX,
