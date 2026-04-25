@@ -1,5 +1,5 @@
 
-- **[Gabriela de Almeida da Silva]** - 
+**Gabriela de Almeida da Silva** 
 
 ```markdown
 # Prossel 2026.1 Oxebots
@@ -12,58 +12,56 @@ A solução separa **tomada de decisão** (FSM) e **planeamento de caminhos** (i
 ## 🧱 Estrutura do Projeto
 
 ```
-solucao/
-├── include/                        # Interfaces e cabeçalhos público
-
-│   ├── Planejador.h                # Interface abstrata do planejador
-
-│   ├── PlanejadorPotencial.h       # Declaração do planejador por campos potenciais
-
-│   ├── PlanejadorDStar.h           # Declaração do planejador D* Lite
-
-│   └── Estrategia.h                # Classe principal (FSM + orquestração)
-
-├── src/                            # Implementações
-
-│   ├── PlanejadorPotencial.cpp
-
-│   ├── PlanejadorDStar.cpp
-
+solucao/       
+                                                                                          ├── include/                        # Interfaces e cabeçalhos público  
+│   ├── Planejador.h                # Interface abstrata do planejador           
+│   ├── PlanejadorPotencial.h       # Declaração do planejador por campos potenciais   
+│   ├── PlanejadorDStar.h           # Declaração do planejador D* Lite  
+│   └── Estrategia.h                # Classe principal (FSM + orquestração)  
+├── src/                            # Implementações  
+│   ├── PlanejadorPotencial.cpp  
+│   ├── PlanejadorDStar.cpp   
 │   └── Estrategia.cpp
-└── CMakeLists.txt                  # Build modular (GLOB_RECURSE em src/)
-```
+└── CMakeLists.txt                  
 
----
+
 
 ## Arquitetura do código: Tomada de Decisão + Planejamento
 
-### Diagrama de fluxo 
+### Diagrama de fluxo
 
-```
+
 GameState
    │
    ▼
+
 ┌─────────────────────────┐
 │  Estrategia::decidirAlvo│   ← Máquina de Estados
 │  alvoX, alvoY           │
 └───────────┬─────────────┘
             │
             ▼
+
 ┌─────────────────────────┐
 │  planejador->planejar() │   ← Interface Planejador (injétavel)
 │  vecX, vecY             │
 └───────────┬─────────────┘
             │
             ▼
+
 ┌─────────────────────────┐
 │  Ação (moveDirection)   │
 │  + paragem se perto     │
 └─────────────────────────┘
+
+
+
+
+
 ```
 
-O planejador é **injetado** no construtor da `Estrategia` - isso permite trocar o algoritmo de desvio de obstáculos sem alterar a FSM.
+O planejador é injetado no construtor da `Estrategia` - isso permite trocar o algoritmo de desvio de obstáculos sem alterar a FSM.
 
-```cpp
 // Construtor com injeção de dependência
 Estrategia(int id, bool isTeamA, std::unique_ptr<Planejador> planejador);
 
@@ -76,7 +74,6 @@ else
                 std::make_unique<PlanejadorDStar>());
 ```
 
----
 
 ## Tomador de Decisão (FSM)
 
