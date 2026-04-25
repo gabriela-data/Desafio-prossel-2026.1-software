@@ -9,7 +9,7 @@ A solução separa **tomada de decisão** (FSM) e **planeamento de caminhos** (i
 
 ---
 
-## 🧱 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 solucao/       
