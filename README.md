@@ -13,19 +13,25 @@ A solução separa **tomada de decisão** (FSM) e **planeamento de caminhos** (i
 
 ```
 solucao/
-├── include/                        # Interfaces e cabeçalhos públicos
+├── include/                        # Interfaces e cabeçalhos público
+
 │   ├── Planejador.h                # Interface abstrata do planejador
+
 │   ├── PlanejadorPotencial.h       # Declaração do planejador por campos potenciais
+
 │   ├── PlanejadorDStar.h           # Declaração do planejador D* Lite
+
 │   └── Estrategia.h                # Classe principal (FSM + orquestração)
+
 ├── src/                            # Implementações
+
 │   ├── PlanejadorPotencial.cpp
+
 │   ├── PlanejadorDStar.cpp
+
 │   └── Estrategia.cpp
 └── CMakeLists.txt                  # Build modular (GLOB_RECURSE em src/)
 ```
-
-A separação `include/` / `src/` permite compilação independente de cada módulo e reutilização em outros projetos.
 
 ---
 
